@@ -51,3 +51,13 @@ tools:
       zh-CN: 客户确认时间后添加日程。
     access: write
 icon: icon.svg
+# Beta while Google reviews the sign-in app (data access); drop both keys once Google approves it.
+stage: beta
+notice:
+  en: "Google is still reviewing this connector. When you sign in, Google shows a warning that the app
+    is not verified: click Advanced, then Go to EzyChat, to continue. Your calendar data still goes
+    only between your computer and Google."
+  ms: "Google masih menyemak penyambung ini. Semasa anda log masuk, Google memaparkan amaran bahawa
+    aplikasi belum disahkan: klik Lanjutan, kemudian Pergi ke EzyChat, untuk teruskan. Data kalendar
+    anda tetap hanya bergerak antara komputer anda dan Google."
+  zh-CN: Google 仍在审核此连接器。登录时，Google 会提示该应用尚未验证：点击“高级”，然后点击“转至 EzyChat”即可继续。您的日历数据仍只在您的电脑和 Google 之间传输。
