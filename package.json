@@ -1,0 +1,21 @@
+{
+  "name": "ezychat-connectors",
+  "private": true,
+  "version": "1.0.0",
+  "description": "The EzyChat connector list: one folder per connector, built into one signed JSON list.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"scripts/*.test.mjs\"",
+    "check": "node scripts/build.mjs --check",
+    "build": "node scripts/build.mjs"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "yaml": "2.9.1"
+  }
+}

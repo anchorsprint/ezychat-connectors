@@ -1,0 +1,51 @@
+# WooCommerce: coming soon (Vote for this connector).
+# Icon: Lucide "shopping-cart" (ISC, see ICONS-LICENSE).
+id: woocommerce
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: coming_soon
+editions:
+  - lite
+  - enterprise
+name: WooCommerce
+summary:
+  en: Order status and stock from your WooCommerce shop.
+  ms: Status pesanan dan stok daripada kedai WooCommerce anda.
+  zh-CN: WooCommerce 网店的订单状态和库存。
+description:
+  en: Customers ask where their order is; the AI looks it up in your WooCommerce shop.
+  ms: Pelanggan bertanya di mana pesanan mereka; AI menyemaknya di kedai WooCommerce anda.
+  zh-CN: 客户询问订单在哪里；AI 在您的 WooCommerce 网店中查询。
+category: online_shop
+privacy:
+  en: EzyChat sends WooCommerce only what a look-up or action needs in one chat, and never the chat
+    text.
+  ms: EzyChat hanya menghantar kepada WooCommerce apa yang diperlukan oleh satu semakan atau tindakan
+    dalam satu sembang, dan tidak pernah teks sembang.
+  zh-CN: EzyChat 只向 WooCommerce 发送一次聊天中查询或操作所需的内容，从不发送聊天内容。
+tools:
+  - name: order_status
+    title:
+      en: Order status
+      ms: Status pesanan
+      zh-CN: 订单状态
+    description:
+      en: Finds an order by number and the customer's phone.
+      ms: Mencari pesanan mengikut nombor dan telefon pelanggan.
+      zh-CN: 按订单号和客户电话查找订单。
+    access: read
+  - name: product_stock
+    title:
+      en: Product stock
+      ms: Stok produk
+      zh-CN: 产品库存
+    description:
+      en: Checks price and stock of a product.
+      ms: Menyemak harga dan stok produk.
+      zh-CN: 查询产品的价格和库存。
+    access: read
+vote:
+  en: "Hi EzyChat team, please add the WooCommerce connector. We would use it for:"
+  ms: "Hai pasukan EzyChat, sila tambah penyambung WooCommerce. Kami akan menggunakannya untuk:"
+  zh-CN: 您好 EzyChat 团队，请添加 WooCommerce 连接器。我们会用它来：
+icon: icon.svg

@@ -1,0 +1,50 @@
+# Xero: coming soon (Vote for this connector).
+# Icon: Lucide "wallet" (ISC, see ICONS-LICENSE).
+id: xero
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: coming_soon
+editions:
+  - lite
+  - enterprise
+name: Xero
+summary:
+  en: Invoice status and contacts in Xero.
+  ms: Status invois dan kenalan dalam Xero.
+  zh-CN: Xero 中的发票状态和联系人。
+description:
+  en: The AI checks invoice status in Xero and adds new customers as contacts.
+  ms: AI menyemak status invois dalam Xero dan menambah pelanggan baharu sebagai kenalan.
+  zh-CN: AI 在 Xero 中查询发票状态，并将新客户添加为联系人。
+category: accounting
+privacy:
+  en: EzyChat sends Xero only what a look-up or action needs in one chat, and never the chat text.
+  ms: EzyChat hanya menghantar kepada Xero apa yang diperlukan oleh satu semakan atau tindakan dalam
+    satu sembang, dan tidak pernah teks sembang.
+  zh-CN: EzyChat 只向 Xero 发送一次聊天中查询或操作所需的内容，从不发送聊天内容。
+tools:
+  - name: invoice
+    title:
+      en: Invoice status
+      ms: Status invois
+      zh-CN: 发票状态
+    description:
+      en: Finds an invoice and whether it is paid.
+      ms: Mencari invois dan sama ada ia sudah dibayar.
+      zh-CN: 查找发票及其是否已付款。
+    access: read
+  - name: contact
+    title:
+      en: Add a contact
+      ms: Tambah kenalan
+      zh-CN: 添加联系人
+    description:
+      en: Adds the customer as a contact.
+      ms: Menambah pelanggan sebagai kenalan.
+      zh-CN: 将客户添加为联系人。
+    access: write
+vote:
+  en: "Hi EzyChat team, please add the Xero connector. We would use it for:"
+  ms: "Hai pasukan EzyChat, sila tambah penyambung Xero. Kami akan menggunakannya untuk:"
+  zh-CN: 您好 EzyChat 团队，请添加 Xero 连接器。我们会用它来：
+icon: icon.svg

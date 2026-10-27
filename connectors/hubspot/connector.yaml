@@ -1,0 +1,50 @@
+# HubSpot: coming soon (Vote for this connector).
+# Icon: Lucide "users" (ISC, see ICONS-LICENSE).
+id: hubspot
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: coming_soon
+editions:
+  - lite
+  - enterprise
+name: HubSpot
+summary:
+  en: Find customers and add leads in HubSpot.
+  ms: Cari pelanggan dan tambah prospek dalam HubSpot.
+  zh-CN: 在 HubSpot 中查找客户并添加潜在客户。
+description:
+  en: The AI finds the customer in HubSpot and adds new enquiries as leads.
+  ms: AI mencari pelanggan dalam HubSpot dan menambah pertanyaan baharu sebagai prospek.
+  zh-CN: AI 在 HubSpot 中查找客户，并将新询问添加为潜在客户。
+category: crm
+privacy:
+  en: EzyChat sends HubSpot only what a look-up or action needs in one chat, and never the chat text.
+  ms: EzyChat hanya menghantar kepada HubSpot apa yang diperlukan oleh satu semakan atau tindakan
+    dalam satu sembang, dan tidak pernah teks sembang.
+  zh-CN: EzyChat 只向 HubSpot 发送一次聊天中查询或操作所需的内容，从不发送聊天内容。
+tools:
+  - name: find_contact
+    title:
+      en: Find the customer
+      ms: Cari pelanggan
+      zh-CN: 查找客户
+    description:
+      en: Finds the customer's record by phone number.
+      ms: Mencari rekod pelanggan mengikut nombor telefon.
+      zh-CN: 按电话号码查找客户记录。
+    access: read
+  - name: add_lead
+    title:
+      en: Add a lead
+      ms: Tambah prospek
+      zh-CN: 添加潜在客户
+    description:
+      en: Adds a new lead with the customer's request.
+      ms: Menambah prospek baharu dengan permintaan pelanggan.
+      zh-CN: 根据客户需求添加新的潜在客户。
+    access: write
+vote:
+  en: "Hi EzyChat team, please add the HubSpot connector. We would use it for:"
+  ms: "Hai pasukan EzyChat, sila tambah penyambung HubSpot. Kami akan menggunakannya untuk:"
+  zh-CN: 您好 EzyChat 团队，请添加 HubSpot 连接器。我们会用它来：
+icon: icon.svg

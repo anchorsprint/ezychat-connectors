@@ -1,0 +1,51 @@
+# Google Sheets: coming soon (Vote for this connector).
+# Icon: Lucide "table-2" (ISC, see ICONS-LICENSE).
+id: google-sheets
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: coming_soon
+editions:
+  - lite
+  - enterprise
+name: Google Sheets
+summary:
+  en: Read prices or stock from a sheet; add new leads.
+  ms: Baca harga atau stok daripada helaian; tambah prospek baharu.
+  zh-CN: 从表格读取价格或库存；添加新的潜在客户。
+description:
+  en: Keep prices, stock or a FAQ in a Google Sheet and let the AI read it. It can also add each new
+    lead as a row.
+  ms: Simpan harga, stok atau soalan lazim dalam Google Sheet dan biarkan AI membacanya. Ia juga boleh
+    menambah setiap prospek baharu sebagai satu baris.
+  zh-CN: 把价格、库存或常见问题放在 Google 表格中，让 AI 读取。它还可以把每个新的潜在客户添加为一行。
+category: spreadsheets
+privacy:
+  en: EzyChat reads only the sheet you choose and writes only the lead rows it adds.
+  ms: EzyChat hanya membaca helaian yang anda pilih dan hanya menulis baris prospek yang ditambahnya.
+  zh-CN: EzyChat 只读取您选择的表格，只写入它添加的潜在客户行。
+tools:
+  - name: read_rows
+    title:
+      en: Read rows
+      ms: Baca baris
+      zh-CN: 读取行
+    description:
+      en: Looks up the rows that match the customer's question.
+      ms: Mencari baris yang sepadan dengan soalan pelanggan.
+      zh-CN: 查找与客户问题匹配的行。
+    access: read
+  - name: add_row
+    title:
+      en: Add a lead
+      ms: Tambah prospek
+      zh-CN: 添加潜在客户
+    description:
+      en: Adds the customer's name, number and request as a row.
+      ms: Menambah nama, nombor dan permintaan pelanggan sebagai satu baris.
+      zh-CN: 将客户的姓名、号码和需求添加为一行。
+    access: write
+vote:
+  en: "Hi EzyChat team, please add the Google Sheets connector. We would use it for:"
+  ms: "Hai pasukan EzyChat, sila tambah penyambung Google Sheets. Kami akan menggunakannya untuk:"
+  zh-CN: 您好 EzyChat 团队，请添加 Google Sheets 连接器。我们会用它来：
+icon: icon.svg

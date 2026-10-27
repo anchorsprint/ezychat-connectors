@@ -1,0 +1,50 @@
+# StoreHub: coming soon (Vote for this connector).
+# Icon: Lucide "store" (ISC, see ICONS-LICENSE).
+id: storehub
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: coming_soon
+editions:
+  - lite
+  - enterprise
+name: StoreHub
+summary:
+  en: Stock and member points from StoreHub POS.
+  ms: Stok dan mata ahli daripada POS StoreHub.
+  zh-CN: 来自 StoreHub POS 的库存和会员积分。
+description:
+  en: The AI checks stock and a member's points in StoreHub.
+  ms: AI menyemak stok dan mata ahli dalam StoreHub.
+  zh-CN: AI 在 StoreHub 中查询库存和会员积分。
+category: online_shop
+privacy:
+  en: EzyChat sends StoreHub only what a look-up or action needs in one chat, and never the chat text.
+  ms: EzyChat hanya menghantar kepada StoreHub apa yang diperlukan oleh satu semakan atau tindakan
+    dalam satu sembang, dan tidak pernah teks sembang.
+  zh-CN: EzyChat 只向 StoreHub 发送一次聊天中查询或操作所需的内容，从不发送聊天内容。
+tools:
+  - name: product_stock
+    title:
+      en: Product stock
+      ms: Stok produk
+      zh-CN: 产品库存
+    description:
+      en: Checks price and stock of a product.
+      ms: Menyemak harga dan stok produk.
+      zh-CN: 查询产品的价格和库存。
+    access: read
+  - name: member
+    title:
+      en: Member points
+      ms: Mata ahli
+      zh-CN: 会员积分
+    description:
+      en: Checks a member's points and tier.
+      ms: Menyemak mata dan tahap ahli.
+      zh-CN: 查询会员的积分和等级。
+    access: read
+vote:
+  en: "Hi EzyChat team, please add the StoreHub connector. We would use it for:"
+  ms: "Hai pasukan EzyChat, sila tambah penyambung StoreHub. Kami akan menggunakannya untuk:"
+  zh-CN: 您好 EzyChat 团队，请添加 StoreHub 连接器。我们会用它来：
+icon: icon.svg

@@ -1,0 +1,50 @@
+# EasyStore: coming soon (Vote for this connector).
+# Icon: Lucide "store" (ISC, see ICONS-LICENSE).
+id: easystore
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: coming_soon
+editions:
+  - lite
+  - enterprise
+name: EasyStore
+summary:
+  en: Order status and stock from EasyStore.
+  ms: Status pesanan dan stok daripada EasyStore.
+  zh-CN: 来自 EasyStore 的订单状态和库存。
+description:
+  en: The AI answers order and stock questions from your EasyStore shop.
+  ms: AI menjawab soalan pesanan dan stok daripada kedai EasyStore anda.
+  zh-CN: AI 根据您的 EasyStore 网店回答订单和库存问题。
+category: online_shop
+privacy:
+  en: EzyChat sends EasyStore only what a look-up or action needs in one chat, and never the chat text.
+  ms: EzyChat hanya menghantar kepada EasyStore apa yang diperlukan oleh satu semakan atau tindakan
+    dalam satu sembang, dan tidak pernah teks sembang.
+  zh-CN: EzyChat 只向 EasyStore 发送一次聊天中查询或操作所需的内容，从不发送聊天内容。
+tools:
+  - name: order_status
+    title:
+      en: Order status
+      ms: Status pesanan
+      zh-CN: 订单状态
+    description:
+      en: Finds an order by number and the customer's phone.
+      ms: Mencari pesanan mengikut nombor dan telefon pelanggan.
+      zh-CN: 按订单号和客户电话查找订单。
+    access: read
+  - name: product_stock
+    title:
+      en: Product stock
+      ms: Stok produk
+      zh-CN: 产品库存
+    description:
+      en: Checks price and stock of a product.
+      ms: Menyemak harga dan stok produk.
+      zh-CN: 查询产品的价格和库存。
+    access: read
+vote:
+  en: "Hi EzyChat team, please add the EasyStore connector. We would use it for:"
+  ms: "Hai pasukan EzyChat, sila tambah penyambung EasyStore. Kami akan menggunakannya untuk:"
+  zh-CN: 您好 EzyChat 团队，请添加 EasyStore 连接器。我们会用它来：
+icon: icon.svg

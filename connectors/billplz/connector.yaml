@@ -1,0 +1,51 @@
+# Billplz: coming soon (Vote for this connector).
+# Icon: Lucide "credit-card" (ISC, see ICONS-LICENSE).
+id: billplz
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: coming_soon
+editions:
+  - lite
+  - enterprise
+name: Billplz
+summary:
+  en: Send Billplz payment links (FPX).
+  ms: Hantar pautan pembayaran Billplz (FPX).
+  zh-CN: 发送 Billplz 付款链接（FPX）。
+description:
+  en: The AI sends a Billplz payment link for an order and tells your team when it is paid.
+  ms: AI menghantar pautan pembayaran Billplz untuk pesanan dan memberitahu pasukan anda apabila ia
+    dibayar.
+  zh-CN: AI 为订单发送 Billplz 付款链接，并在付款后通知团队。
+category: payments
+privacy:
+  en: EzyChat sends Billplz only what a look-up or action needs in one chat, and never the chat text.
+  ms: EzyChat hanya menghantar kepada Billplz apa yang diperlukan oleh satu semakan atau tindakan
+    dalam satu sembang, dan tidak pernah teks sembang.
+  zh-CN: EzyChat 只向 Billplz 发送一次聊天中查询或操作所需的内容，从不发送聊天内容。
+tools:
+  - name: payment_link
+    title:
+      en: Create a payment link
+      ms: Cipta pautan pembayaran
+      zh-CN: 创建付款链接
+    description:
+      en: Creates a link for the amount your team or price list sets.
+      ms: Mencipta pautan untuk jumlah yang ditetapkan oleh pasukan atau senarai harga anda.
+      zh-CN: 按团队或价目表设定的金额创建链接。
+    access: write
+  - name: payment_status
+    title:
+      en: Check payment
+      ms: Semak pembayaran
+      zh-CN: 查询付款
+    description:
+      en: Checks whether a link was paid.
+      ms: Menyemak sama ada pautan sudah dibayar.
+      zh-CN: 查询链接是否已付款。
+    access: read
+vote:
+  en: "Hi EzyChat team, please add the Billplz connector. We would use it for:"
+  ms: "Hai pasukan EzyChat, sila tambah penyambung Billplz. Kami akan menggunakannya untuk:"
+  zh-CN: 您好 EzyChat 团队，请添加 Billplz 连接器。我们会用它来：
+icon: icon.svg

@@ -1,0 +1,17 @@
+# Gallery order: these connectors come first, in this order; every other connector follows by id.
+order:
+  - google-calendar
+  - google-sheets
+  - hitpay
+  - shopify
+  - autocount
+  - sql-account
+  - bukku
+  - xero
+  - zoho-books
+  - zoho-crm
+  - hubspot
+  - woocommerce
+  - easystore
+  - storehub
+  - billplz

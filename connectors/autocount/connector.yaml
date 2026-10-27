@@ -1,0 +1,52 @@
+# AutoCount: coming soon (Vote for this connector).
+# Icon: Lucide "calculator" (ISC, see ICONS-LICENSE).
+id: autocount
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: coming_soon
+editions:
+  - lite
+  - enterprise
+name: AutoCount
+summary:
+  en: Stock, prices and quotations from AutoCount Accounting.
+  ms: Stok, harga dan sebut harga daripada AutoCount Accounting.
+  zh-CN: 来自 AutoCount Accounting 的库存、价格和报价单。
+description:
+  en: The AI answers stock and price questions from AutoCount and drafts quotations for your team to
+    send.
+  ms: AI menjawab soalan stok dan harga daripada AutoCount dan mendraf sebut harga untuk dihantar oleh
+    pasukan anda.
+  zh-CN: AI 根据 AutoCount 回答库存和价格问题，并起草报价单供团队发送。
+category: accounting
+privacy:
+  en: EzyChat sends AutoCount only what a look-up or action needs in one chat, and never the chat text.
+  ms: EzyChat hanya menghantar kepada AutoCount apa yang diperlukan oleh satu semakan atau tindakan
+    dalam satu sembang, dan tidak pernah teks sembang.
+  zh-CN: EzyChat 只向 AutoCount 发送一次聊天中查询或操作所需的内容，从不发送聊天内容。
+tools:
+  - name: stock
+    title:
+      en: Stock and price
+      ms: Stok dan harga
+      zh-CN: 库存和价格
+    description:
+      en: Looks up an item's stock and selling price.
+      ms: Mencari stok dan harga jualan sesuatu item.
+      zh-CN: 查询商品的库存和售价。
+    access: read
+  - name: quotation
+    title:
+      en: Create a quotation
+      ms: Cipta sebut harga
+      zh-CN: 创建报价单
+    description:
+      en: Drafts a quotation for the customer; your team sends it.
+      ms: Mendraf sebut harga untuk pelanggan; pasukan anda menghantarnya.
+      zh-CN: 为客户起草报价单；由团队发送。
+    access: write
+vote:
+  en: "Hi EzyChat team, please add the AutoCount connector. We would use it for:"
+  ms: "Hai pasukan EzyChat, sila tambah penyambung AutoCount. Kami akan menggunakannya untuk:"
+  zh-CN: 您好 EzyChat 团队，请添加 AutoCount 连接器。我们会用它来：
+icon: icon.svg

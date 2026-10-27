@@ -1,0 +1,51 @@
+# Zoho Books: coming soon (Vote for this connector).
+# Icon: Lucide "receipt" (ISC, see ICONS-LICENSE).
+id: zoho-books
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: coming_soon
+editions:
+  - lite
+  - enterprise
+name: Zoho Books
+summary:
+  en: Invoices and quotations from Zoho Books.
+  ms: Invois dan sebut harga daripada Zoho Books.
+  zh-CN: 来自 Zoho Books 的发票和报价单。
+description:
+  en: The AI checks invoices and drafts quotations in Zoho Books.
+  ms: AI menyemak invois dan mendraf sebut harga dalam Zoho Books.
+  zh-CN: AI 在 Zoho Books 中查询发票并起草报价单。
+category: accounting
+privacy:
+  en: EzyChat sends Zoho Books only what a look-up or action needs in one chat, and never the chat
+    text.
+  ms: EzyChat hanya menghantar kepada Zoho Books apa yang diperlukan oleh satu semakan atau tindakan
+    dalam satu sembang, dan tidak pernah teks sembang.
+  zh-CN: EzyChat 只向 Zoho Books 发送一次聊天中查询或操作所需的内容，从不发送聊天内容。
+tools:
+  - name: invoice
+    title:
+      en: Invoice status
+      ms: Status invois
+      zh-CN: 发票状态
+    description:
+      en: Finds an invoice and whether it is paid.
+      ms: Mencari invois dan sama ada ia sudah dibayar.
+      zh-CN: 查找发票及其是否已付款。
+    access: read
+  - name: quotation
+    title:
+      en: Create a quotation
+      ms: Cipta sebut harga
+      zh-CN: 创建报价单
+    description:
+      en: Drafts a quotation for the customer; your team sends it.
+      ms: Mendraf sebut harga untuk pelanggan; pasukan anda menghantarnya.
+      zh-CN: 为客户起草报价单；由团队发送。
+    access: write
+vote:
+  en: "Hi EzyChat team, please add the Zoho Books connector. We would use it for:"
+  ms: "Hai pasukan EzyChat, sila tambah penyambung Zoho Books. Kami akan menggunakannya untuk:"
+  zh-CN: 您好 EzyChat 团队，请添加 Zoho Books 连接器。我们会用它来：
+icon: icon.svg

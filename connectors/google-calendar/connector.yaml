@@ -1,0 +1,53 @@
+# Google Calendar: built into the app (kind builtin); this entry gives its gallery texts.
+# Icon: Lucide "calendar-days" (ISC, see ICONS-LICENSE).
+id: google-calendar
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: builtin
+editions:
+  - lite
+  - enterprise
+builtinId: google-calendar
+name: Google Calendar
+summary:
+  en: Check free times and book appointments.
+  ms: Semak masa lapang dan tempah janji temu.
+  zh-CN: 查看空闲时间并预约。
+description:
+  en: "Your AI agent offers free times from your Google Calendar and, if you allow it, books the time
+    the customer confirms. Sign in with Google: no link to paste."
+  ms: "Ejen AI anda menawarkan masa lapang daripada Google Calendar anda dan, jika anda benarkan,
+    menempah masa yang disahkan oleh pelanggan. Log masuk dengan Google: tiada pautan untuk
+    ditampal."
+  zh-CN: AI 代理会根据您的 Google Calendar 提供空闲时间，并在您允许时预约客户确认的时间。使用 Google 登录：无需粘贴链接。
+category: calendar
+privacy:
+  en: "EzyChat reads busy times of the calendar you choose and writes only the events it books: title,
+    and the customer’s name, phone and email. No chat text goes to Google. The sign-in is stored
+    encrypted on this computer."
+  ms: "EzyChat membaca masa sibuk kalendar yang anda pilih dan hanya menulis acara yang ditempahnya:
+    tajuk, serta nama, nombor telefon dan e-mel pelanggan. Tiada teks sembang dihantar ke Google.
+    Log masuk disimpan secara tersulit di komputer ini."
+  zh-CN: EzyChat 读取您所选日历的忙碌时间，只写入它预约的日程：标题，以及客户的姓名、电话号码和电子邮件。聊天内容不会发送到 Google。登录信息加密保存在这台电脑上。
+tools:
+  - name: check_free_times
+    title:
+      en: Check free times
+      ms: Semak masa lapang
+      zh-CN: 查看空闲时间
+    description:
+      en: Reads when the chosen calendar is busy.
+      ms: Membaca bila kalendar yang dipilih sibuk.
+      zh-CN: 读取所选日历的忙碌时间。
+    access: read
+  - name: book_appointment
+    title:
+      en: Book appointments
+      ms: Tempah janji temu
+      zh-CN: 预约
+    description:
+      en: Adds an event after the customer confirms a time.
+      ms: Menambah acara selepas pelanggan mengesahkan masa.
+      zh-CN: 客户确认时间后添加日程。
+    access: write
+icon: icon.svg

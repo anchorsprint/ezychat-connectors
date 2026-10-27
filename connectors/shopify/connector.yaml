@@ -1,0 +1,51 @@
+# Shopify: coming soon (Vote for this connector).
+# Icon: Lucide "shopping-bag" (ISC, see ICONS-LICENSE).
+id: shopify
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: coming_soon
+editions:
+  - lite
+  - enterprise
+name: Shopify
+summary:
+  en: Order status and stock from your online shop.
+  ms: Status pesanan dan stok daripada kedai dalam talian anda.
+  zh-CN: 网店的订单状态和库存。
+description:
+  en: Customers ask where their order is or whether an item is in stock; the AI looks it up in your
+    Shopify shop.
+  ms: Pelanggan bertanya di mana pesanan mereka atau sama ada item ada stok; AI menyemaknya di kedai
+    Shopify anda.
+  zh-CN: 客户询问订单在哪里或商品是否有货；AI 在您的 Shopify 网店中查询。
+category: online_shop
+privacy:
+  en: EzyChat only reads orders and products; it never changes your shop.
+  ms: EzyChat hanya membaca pesanan dan produk; ia tidak pernah mengubah kedai anda.
+  zh-CN: EzyChat 只读取订单和产品；从不更改您的网店。
+tools:
+  - name: order_status
+    title:
+      en: Order status
+      ms: Status pesanan
+      zh-CN: 订单状态
+    description:
+      en: Finds an order by number and the customer's phone.
+      ms: Mencari pesanan mengikut nombor dan telefon pelanggan.
+      zh-CN: 按订单号和客户电话查找订单。
+    access: read
+  - name: product_stock
+    title:
+      en: Product stock
+      ms: Stok produk
+      zh-CN: 产品库存
+    description:
+      en: Checks price and stock of a product.
+      ms: Menyemak harga dan stok produk.
+      zh-CN: 查询产品的价格和库存。
+    access: read
+vote:
+  en: "Hi EzyChat team, please add the Shopify connector. We would use it for:"
+  ms: "Hai pasukan EzyChat, sila tambah penyambung Shopify. Kami akan menggunakannya untuk:"
+  zh-CN: 您好 EzyChat 团队，请添加 Shopify 连接器。我们会用它来：
+icon: icon.svg
