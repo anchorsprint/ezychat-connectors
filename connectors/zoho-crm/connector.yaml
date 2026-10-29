@@ -1,51 +1,52 @@
-# Zoho CRM: coming soon (Vote for this connector).
+# Zoho CRM: built into the app from EzyChat 0.1.63 (kind builtin); this entry gives its gallery texts.
 # Icon: Lucide "contact-round" (ISC, see ICONS-LICENSE).
 id: zoho-crm
 schemaVersion: 1
-minAppVersion: 0.1.0
-kind: coming_soon
+minAppVersion: 0.1.63
+kind: builtin
 editions:
   - lite
   - enterprise
+builtinId: zoho-crm
 name: Zoho CRM
 summary:
-  en: Find customers and add leads in Zoho CRM.
-  ms: Cari pelanggan dan tambah prospek dalam Zoho CRM.
-  zh-CN: 在 Zoho CRM 中查找客户并添加潜在客户。
+  en: "Find customers and add leads in Zoho CRM."
+  ms: "Cari pelanggan dan tambah prospek dalam Zoho CRM."
+  zh-CN: "在 Zoho CRM 中查找客户并添加潜在客户。"
 description:
-  en: The AI finds the customer in Zoho CRM before it answers and adds new enquiries as leads.
-  ms: AI mencari pelanggan dalam Zoho CRM sebelum menjawab dan menambah pertanyaan baharu sebagai
-    prospek.
-  zh-CN: AI 在回答前先在 Zoho CRM 中查找客户，并将新询问添加为潜在客户。
+  en: "Before it answers, your AI agent finds the customer in Zoho CRM by their WhatsApp number and, if you allow it, adds new enquiries as leads. Your team sees the Zoho record beside each chat. Sign in with Zoho: no link or key to paste."
+  ms: "Sebelum menjawab, ejen AI anda mencari pelanggan dalam Zoho CRM mengikut nombor WhatsApp mereka dan, jika anda benarkan, menambah pertanyaan baharu sebagai prospek. Pasukan anda melihat rekod Zoho di sebelah setiap sembang. Log masuk dengan Zoho: tiada pautan atau kunci untuk ditampal."
+  zh-CN: "AI 代理在回答前会按 WhatsApp 号码在 Zoho CRM 中查找客户，并在您允许时把新咨询添加为潜在客户。团队可以在每个聊天旁看到 Zoho 记录。使用 Zoho 登录：无需粘贴链接或密钥。"
 category: crm
 privacy:
-  en: EzyChat sends Zoho CRM only what a look-up or action needs in one chat, and never the chat text.
-  ms: EzyChat hanya menghantar kepada Zoho CRM apa yang diperlukan oleh satu semakan atau tindakan
-    dalam satu sembang, dan tidak pernah teks sembang.
-  zh-CN: EzyChat 只向 Zoho CRM 发送一次聊天中查询或操作所需的内容，从不发送聊天内容。
+  en: "EzyChat sends Zoho CRM the chat's WhatsApp number for a look-up and, for a new lead, the customer's name, number, email and company when given, and a one-line summary of the request. Never the chat itself. The sign-in is stored encrypted on this computer."
+  ms: "EzyChat menghantar kepada Zoho CRM nombor WhatsApp sembang untuk semakan dan, untuk prospek baharu, nama, nombor, e-mel dan syarikat pelanggan jika diberi, serta ringkasan satu baris permintaan. Tidak pernah sembang itu sendiri. Log masuk disimpan secara tersulit di komputer ini."
+  zh-CN: "查询时，EzyChat 只向 Zoho CRM 发送聊天的 WhatsApp 号码；添加新潜在客户时，发送客户提供的姓名、号码、电子邮件和公司，以及一行需求摘要。从不发送聊天内容。登录信息加密保存在这台电脑上。"
 tools:
-  - name: find_contact
+  - name: find_crm_customer
     title:
-      en: Find the customer
-      ms: Cari pelanggan
-      zh-CN: 查找客户
+      en: "Find the customer"
+      ms: "Cari pelanggan"
+      zh-CN: "查找客户"
     description:
-      en: Finds the customer's record by phone number.
-      ms: Mencari rekod pelanggan mengikut nombor telefon.
-      zh-CN: 按电话号码查找客户记录。
+      en: "Looks up the chat's WhatsApp number in Contacts and Leads: name, company, owner and lead status."
+      ms: "Mencari nombor WhatsApp sembang dalam Contacts dan Leads: nama, syarikat, pemilik dan status prospek."
+      zh-CN: "在 Contacts 和 Leads 中查找聊天的 WhatsApp 号码：姓名、公司、负责人和潜在客户状态。"
     access: read
-  - name: add_lead
+  - name: add_crm_lead
     title:
-      en: Add a lead
-      ms: Tambah prospek
-      zh-CN: 添加潜在客户
+      en: "Add a lead"
+      ms: "Tambah prospek"
+      zh-CN: "添加潜在客户"
     description:
-      en: Adds a new lead with the customer's request.
-      ms: Menambah prospek baharu dengan permintaan pelanggan.
-      zh-CN: 根据客户需求添加新的潜在客户。
+      en: "Adds a lead when the number is not in Zoho CRM yet, with a one-line summary of the request. Off until you turn it on."
+      ms: "Menambah prospek apabila nombor belum ada dalam Zoho CRM, dengan ringkasan satu baris permintaan. Dimatikan sehingga anda menghidupkannya."
+      zh-CN: "号码尚未在 Zoho CRM 中时添加潜在客户，并附一行需求摘要。默认关闭，需您开启。"
     access: write
-vote:
-  en: "Hi EzyChat team, please add the Zoho CRM connector. We would use it for:"
-  ms: "Hai pasukan EzyChat, sila tambah penyambung Zoho CRM. Kami akan menggunakannya untuk:"
-  zh-CN: 您好 EzyChat 团队，请添加 Zoho CRM 连接器。我们会用它来：
 icon: icon.svg
+# Beta until the connector is checked against a real Zoho organisation; drop both keys then.
+stage: beta
+notice:
+  en: "New: Zoho CRM is in Beta. If the sign-in or a look-up does not work for your Zoho account, tell us through Help & feedback."
+  ms: "Baharu: Zoho CRM dalam Beta. Jika log masuk atau semakan tidak berfungsi untuk akaun Zoho anda, beritahu kami melalui Bantuan & maklum balas."
+  zh-CN: "新功能：Zoho CRM 处于 Beta 阶段。如果您的 Zoho 账户无法登录或查询，请通过“帮助与反馈”告诉我们。"
