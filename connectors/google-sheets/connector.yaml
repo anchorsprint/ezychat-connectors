@@ -1,9 +1,9 @@
-# Google Sheets: built into the app (kind builtin) from EzyChat 0.1.70; this entry gives its gallery
+# Google Sheets: built into the app (kind builtin) from EzyChat 0.1.71; this entry gives its gallery
 # texts. Older apps show "Needs a newer EzyChat".
 # Icon: Lucide "table-2" (ISC, see ICONS-LICENSE).
 id: google-sheets
 schemaVersion: 1
-minAppVersion: 0.1.70
+minAppVersion: 0.1.71
 kind: builtin
 editions:
   - lite
