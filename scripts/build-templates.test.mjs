@@ -189,9 +189,9 @@ describe('build-templates', () => {
     ['an unknown language', { noodleShop: { meta: withText('fr', 'name', 'Nouilles') } }, /texts.fr: unknown language/],
     ['a long text in template.json', { noodleShop: { meta: withText('en', 'focus', 'x') } }, /texts.en.focus belongs in en\/focus.md/],
     ['a control character', { noodleShop: { meta: withText('en', 'description', 'Menu\u0007 and hours.') } }, /texts.en.description contains U\+0007/],
-    ['a bidi override', { noodleShop: { meta: withText('en', 'name', 'Noodle ‮shop') } }, /texts.en.name contains U\+202E/],
-    ['a bidi isolate in a Markdown file', { noodleShop: { meta: META, langs: { en: { ...LONG, 'focus.md': 'Help ⁦customers⁩.\n' } } } }, /texts.en.focus contains U\+2066/],
-    ['a byte order mark', { noodleShop: { meta: META, langs: { en: { ...LONG, 'context.md': '﻿Open.\n' } } } }, /texts.en.contextText contains U\+FEFF/],
+    ['a bidi override', { noodleShop: { meta: withText('en', 'name', 'Noodle \u202Eshop') } }, /texts.en.name contains U\+202E/],
+    ['a bidi isolate in a Markdown file', { noodleShop: { meta: META, langs: { en: { ...LONG, 'focus.md': 'Help \u2066customers\u2069.\n' } } } }, /texts.en.focus contains U\+2066/],
+    ['a byte order mark', { noodleShop: { meta: META, langs: { en: { ...LONG, 'context.md': '\uFEFFOpen.\n' } } } }, /texts.en.contextText contains U\+FEFF/],
     ['Windows line ends', { noodleShop: { meta: META, langs: { en: { ...LONG, 'context.md': 'Open.\r\nClosed Sunday.\n' } } } }, /texts.en.contextText contains U\+000D/],
   ];
   for (const [name, templates, expected] of cases)
@@ -208,7 +208,7 @@ describe('build-templates', () => {
       { id: 'food', name: { en: 'Again' } },
       { id: 'x', name: { en: 'Too short id' } },
       { id: 'events', name: { ms: 'Acara' } },
-      { id: 'travel', name: { en: 'Travel‮' } },
+      { id: 'travel', name: { en: 'Travel\u202E' } },
     ]);
     const problems = build({ root: r, check: true }).problems.join('\n');
     assert.match(problems, /"food" is listed twice/);
