@@ -104,8 +104,9 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           put() {
-            npx --yes "$WRANGLER" r2 object put "$BUCKET/templates/$1" --file "$2" \
-              --content-type "$3" --cache-control no-cache --remote
+            local name="$1" file="$2" type="$3"
+            npx --yes "$WRANGLER" r2 object put "$BUCKET/templates/$name" --file "$file" \
+              --content-type "$type" --cache-control no-cache --remote
           }
           put templates-v1.json.sig dist/templates/templates-v1.json.sig "text/plain; charset=utf-8"
           put templates-v1.json dist/templates/templates-v1.json "application/json; charset=utf-8"

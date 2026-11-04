@@ -36,7 +36,7 @@ export const LIST_MAX_BYTES = 512 * 1024;
  * controls, BOM). The build refuses them instead, so the published text is exactly what shows.
  */
 // eslint-disable-next-line no-control-regex
-const FORBIDDEN_CHAR = /[\u0000-\u0008\u000b-\u001f\u007f-\u009f‎‏‪-‮⁦-⁩؜﻿]/u;
+const FORBIDDEN_CHAR = /[\u0000-\u0008\u000b-\u001f\u007f-\u009f\u200E\u200F\u202A-\u202E\u2066-\u2069\u061C\uFEFF]/u;
 
 /** Paths of every string in `value` that contains a forbidden character. */
 export function forbiddenCharacters(value, path = []) {
