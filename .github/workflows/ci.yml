@@ -1,5 +1,6 @@
-# Checks every pull request: the build's own tests and every connector folder (schema, https MCP
-# address, icon, texts, no secret-like fields). Needs no secret.
+# Checks every pull request: the builds' own tests, every connector folder (schema, https MCP
+# address, icon, texts, no secret-like fields) and every template folder (schema, categories, texts,
+# no control or bidi characters). Needs no secret.
 name: CI
 
 on:
@@ -26,3 +27,5 @@ jobs:
       - run: npm test
       - name: Check the connectors
         run: node scripts/build.mjs --check
+      - name: Check the templates
+        run: node scripts/build-templates.mjs --check

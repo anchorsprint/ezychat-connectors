@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dl.ezychat.ai/templates/schema/template-v1.json",
+  "title": "EzyChat AI agent template (schemaVersion 1)",
+  "description": "One entry of the EzyChat template list. Generated from the app contract by scripts/template-schema.mjs in ezychat-lite; do not edit by hand.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-zA-Z0-9-]{1,48}$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000000
+    },
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "minAppVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "editions": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "lite",
+          "enterprise"
+        ]
+      }
+    },
+    "category": {
+      "type": "string",
+      "pattern": "^[a-z][a-zA-Z0-9-]{1,39}$"
+    },
+    "icon": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]{1,40}$"
+    },
+    "preset": {
+      "type": "string",
+      "enum": [
+        "sales",
+        "faq",
+        "custom"
+      ]
+    },
+    "texts": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "object",
+          "properties": {
+            "agentName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            },
+            "keywords": {
+              "default": "",
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 300
+            },
+            "focus": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "handoffRules": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "contextName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "contextText": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 20000
+            }
+          },
+          "required": [
+            "agentName",
+            "name",
+            "description",
+            "focus",
+            "handoffRules",
+            "contextName",
+            "contextText"
+          ],
+          "additionalProperties": false
+        },
+        "ms": {
+          "type": "object",
+          "properties": {
+            "agentName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            },
+            "keywords": {
+              "default": "",
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 300
+            },
+            "focus": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "handoffRules": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "contextName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "contextText": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 20000
+            }
+          },
+          "required": [
+            "agentName",
+            "name",
+            "description",
+            "focus",
+            "handoffRules",
+            "contextName",
+            "contextText"
+          ],
+          "additionalProperties": false
+        },
+        "zh-CN": {
+          "type": "object",
+          "properties": {
+            "agentName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            },
+            "keywords": {
+              "default": "",
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 300
+            },
+            "focus": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "handoffRules": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "contextName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "contextText": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 20000
+            }
+          },
+          "required": [
+            "agentName",
+            "name",
+            "description",
+            "focus",
+            "handoffRules",
+            "contextName",
+            "contextText"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "en"
+      ],
+      "additionalProperties": false
+    },
+    "defaults": {
+      "type": "object",
+      "properties": {
+        "answerDirect": {
+          "type": "boolean"
+        },
+        "answerGroups": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "recommendedConnectors": {
+      "maxItems": 5,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]{1,48}$"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "version",
+    "schemaVersion",
+    "minAppVersion",
+    "editions",
+    "category",
+    "icon",
+    "preset",
+    "texts"
+  ],
+  "additionalProperties": false
+}
