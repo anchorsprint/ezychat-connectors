@@ -1,7 +1,9 @@
-# Publishes the connector list after a merge to main: test → check → build → sign → upload to the
-# R2 bucket behind https://dl.ezychat.ai (folder connectors/). The signing key and the Cloudflare
-# token live only in the protected `release` environment (secrets CONNECTOR_LIST_SIGNING_KEY,
-# CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID).
+# Publishes the connector list and the AI agent template list after a merge to main: test → build →
+# sign → upload to the R2 bucket behind https://dl.ezychat.ai (folders connectors/ and templates/).
+# Both lists are signed with the same key; the template signature covers the prefix
+# "ezychat-templates-v1\n" + the bytes, so neither list can stand in for the other. The signing key
+# and the Cloudflare token live only in the protected `release` environment (secrets
+# CONNECTOR_LIST_SIGNING_KEY, CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID).
 name: Publish
 
 on:
@@ -45,6 +47,24 @@ jobs:
             exit 1
           fi
           node scripts/build.mjs
+      # The next template sequence is the published one + 1 (1 when nothing is published yet). Any
+      # answer other than 200 or 404 stops the publish, so a failed download never lowers it.
+      - name: Read the published template list
+        id: published
+        run: |
+          status=$(curl --silent --show-error --output published-templates.json --write-out '%{http_code}' \
+            https://dl.ezychat.ai/templates/templates-v1.json)
+          case "$status" in
+            200) echo "file=published-templates.json" >> "$GITHUB_OUTPUT" ;;
+            404) echo "file=none" >> "$GITHUB_OUTPUT" ;;
+            *) echo "::error::dl.ezychat.ai/templates/templates-v1.json answered HTTP $status"; exit 1 ;;
+          esac
+      # Writes nothing when the templates are the same as the published ones (the sequence stays).
+      - name: Build and sign the templates
+        env:
+          CONNECTOR_LIST_SIGNING_KEY: ${{ secrets.CONNECTOR_LIST_SIGNING_KEY }}
+          PUBLISHED: ${{ steps.published.outputs.file }}
+        run: node scripts/build-templates.mjs --published "$PUBLISHED"
       # Icons first, then the signature, then the list. Everything is no-cache: the app checks the
       # hash of every icon and the signature of the exact list bytes, so a stale edge copy would make
       # it refuse the list until the cache expires.
@@ -76,3 +96,23 @@ jobs:
         run: |
           curl --fail --silent --show-error https://dl.ezychat.ai/connectors/list-v1.json -o published.json
           cmp published.json dist/list-v1.json
+      # Signature first, then the list, both no-cache (same reason as the connector list).
+      - name: Upload to dl.ezychat.ai/templates/
+        if: hashFiles('dist/templates/templates-v1.json') != ''
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          put() {
+            npx --yes "$WRANGLER" r2 object put "$BUCKET/templates/$1" --file "$2" \
+              --content-type "$3" --cache-control no-cache --remote
+          }
+          put templates-v1.json.sig dist/templates/templates-v1.json.sig "text/plain; charset=utf-8"
+          put templates-v1.json dist/templates/templates-v1.json "application/json; charset=utf-8"
+      - name: Check the published templates
+        if: hashFiles('dist/templates/templates-v1.json') != ''
+        run: |
+          curl --fail --silent --show-error https://dl.ezychat.ai/templates/templates-v1.json -o published-templates.json
+          curl --fail --silent --show-error https://dl.ezychat.ai/templates/templates-v1.json.sig -o published-templates.json.sig
+          cmp published-templates.json dist/templates/templates-v1.json
+          cmp published-templates.json.sig dist/templates/templates-v1.json.sig

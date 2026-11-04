@@ -1,6 +1,7 @@
 # EzyChat connectors
 
-The list of connectors that EzyChat (Lite and Enterprise) shows in **Admin → Connectors**. Each
+The list of connectors that EzyChat (Lite and Enterprise) shows in **Admin → Connectors**, and the
+list of AI agent templates it shows in the template gallery (see [AI agent templates](#ai-agent-templates)). Each
 connector lives in its own folder here. On every merge to `main`, one signed JSON list is built from
 the folders and published to `https://dl.ezychat.ai/connectors/`. Each EzyChat app downloads it at
 start and when an admin opens Admin → Connectors, checks it, and keeps a local copy.
@@ -20,8 +21,13 @@ connectors/<id>/skill.md            instructions for the AI (optional; skill.ms.
 connectors/<id>/icon.svg            square icon (or icon.png), at most 256 KB
 order.yaml                          gallery order (ids listed first; the rest follow by id)
 scripts/build.mjs                   validates every entry, builds the list, signs it
-.github/workflows/ci.yml            pull requests: tests + validation
-.github/workflows/publish.yml       merge to main: test, build, sign, upload to dl.ezychat.ai
+schema/template-v1.json             JSON Schema of one template (schemaVersion 1); generated from the app
+templates/categories.json           template categories (id + name per language), in gallery order
+templates/<id>/template.json        one template: version, category, icon name, preset, short texts
+templates/<id>/<lang>/*.md          its long texts: focus.md, handoff-rules.md, context.md
+scripts/build-templates.mjs         validates every template, builds the template list, signs it
+.github/workflows/ci.yml            pull requests: tests + validation (connectors and templates)
+.github/workflows/publish.yml       merge to main: test, build, sign, upload both lists to dl.ezychat.ai
 ```
 
 Published files:
@@ -31,6 +37,8 @@ Published files:
 | `https://dl.ezychat.ai/connectors/list-v1.json`       | the list (format 1)                        |
 | `https://dl.ezychat.ai/connectors/list-v1.json.sig`   | base64 Ed25519 signature of its exact bytes |
 | `https://dl.ezychat.ai/connectors/icons/<id>.svg`     | icons, each listed with its SHA-256 and size |
+| `https://dl.ezychat.ai/templates/templates-v1.json`   | the AI agent template list (format 1)      |
+| `https://dl.ezychat.ai/templates/templates-v1.json.sig` | base64 Ed25519 signature of `ezychat-templates-v1\n` + its exact bytes |
 
 ## Add a connector (pull request)
 
@@ -121,3 +129,54 @@ it signed with; it must be one of the keys in the app (`packages/server/src/conn
 A publish uploads the icons, then the signature, then the list. An app that downloads during the
 few seconds between the two last uploads refuses that pair and keeps its last good copy until the
 next check. Old icons stay in the bucket (the list names only the current ones).
+
+## AI agent templates
+
+The template gallery in **AI agent** reads `templates-v1.json`. A template only fills the editable
+boxes (name, type, role, hand-over rules) and one Business context text after an admin clicks
+**Apply**; nothing in it runs code or changes a connection, key or model. The app keeps its built-in
+templates: a list entry replaces the built-in template with the same id only when its `version` is
+**higher**, and a new id is added. A list cannot remove a template.
+
+### Add or change a template (pull request)
+
+1. **Change**: edit the files in `templates/<id>/` and **raise `version`** in `template.json` by 1.
+   Without a higher version, installed apps keep the copy they have.
+   **Add**: copy an existing folder to `templates/<id>/` (`id`: starts with a–z, then letters, digits
+   or `-`; the folder name and `id` must match) and start at `version: 1`.
+2. `template.json` holds the short texts per language (`agentName`, `name`, `description`,
+   `keywords`, `contextName`); the long texts live in `<lang>/focus.md`, `<lang>/handoff-rules.md`
+   and `<lang>/context.md`. English (`en/`) is required; `ms` and `zh-CN` are optional, and a missing
+   language shows the whole English set. A language needs both its short texts and its folder.
+3. `category` must be an id in `templates/categories.json` (add a category there with at least an
+   English name). `icon` is a name from the icon set built into the app (lucide names such as
+   `cake-slice`); an unknown name shows a neutral icon. `preset` is `sales`, `faq` or `custom`.
+   Set `minAppVersion` to the first app version the template is meant for.
+4. Write plain text: tab and newline only. Control characters, bidirectional controls, a byte order
+   mark and Windows line ends (CRLF) are refused.
+5. Run the checks:
+
+   ```bash
+   npm ci
+   npm test
+   npm run check
+   ```
+
+6. Open the pull request. CI runs the same checks; on merge, Publish signs and uploads the list.
+
+The keys of `template.json` are the fields of [`schema/template-v1.json`](schema/template-v1.json),
+generated from the app's contract (`packages/shared/src/template-list.ts` in ezychat-lite) with
+`scripts/template-schema.mjs` there. Copy it here when the contract changes.
+
+### Signing and sequence
+
+The template list is signed with the **same** key as the connector list (`CONNECTOR_LIST_SIGNING_KEY`
+in the `release` environment), over `ezychat-templates-v1\n` followed by the exact file bytes. The
+connector list signature has no prefix, so a connector list never verifies as a template list and a
+template list never as a connector list. The file also says `catalog: "templates"`.
+
+Each publish reads the published list: the new `sequence` is its sequence + 1 (1 when nothing is
+published). When the categories and templates are unchanged, nothing is uploaded and the sequence
+stays. Any download error other than "not found" stops the publish, so the sequence never goes down.
+The signature is uploaded first, then the list; an app that downloads between the two uploads keeps
+its last good copy until the next check.

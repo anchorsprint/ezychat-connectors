@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "node --test \"scripts/*.test.mjs\"",
-    "check": "node scripts/build.mjs --check",
+    "check": "node scripts/build.mjs --check && node scripts/build-templates.mjs --check",
     "build": "node scripts/build.mjs"
   },
   "dependencies": {
