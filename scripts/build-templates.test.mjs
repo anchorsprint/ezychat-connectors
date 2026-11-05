@@ -225,7 +225,7 @@ describe('build-templates', () => {
   it('the templates in this repository are valid', () => {
     const result = collect();
     assert.deepEqual(result.problems, []);
-    assert.equal(result.entries.length, 18);
+    assert.equal(result.entries.length, 19);
     for (const entry of result.entries) assert.ok(entry.texts.en.focus, `${entry.id} has an English focus`);
   });
 });
