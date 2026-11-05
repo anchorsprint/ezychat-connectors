@@ -1,0 +1,43 @@
+{
+  "id": "taskPoints",
+  "version": 1,
+  "schemaVersion": 1,
+  "minAppVersion": "0.1.75",
+  "editions": [
+    "lite",
+    "enterprise"
+  ],
+  "category": "operations",
+  "icon": "briefcase",
+  "preset": "custom",
+  "defaults": {
+    "answerGroups": true,
+    "answerDirect": false
+  },
+  "recommendedConnectors": [
+    "google-sheets"
+  ],
+  "texts": {
+    "en": {
+      "agentName": "Task points assistant",
+      "name": "Task points agent",
+      "description": "Records project tasks that staff report as done on WhatsApp to Google Sheets, once per task. Your sheet's formulas add up points, project progress and commission. Never approves or pays.",
+      "keywords": "task tasks project points progress kpi commission staff completion done report sheet group",
+      "contextName": "Task points rules"
+    },
+    "ms": {
+      "agentName": "Pembantu mata tugasan",
+      "name": "Ejen mata tugasan",
+      "description": "Merekod tugasan projek yang dilaporkan siap oleh staf di WhatsApp ke Google Sheets, sekali bagi setiap tugasan. Formula helaian anda mengira mata, kemajuan projek dan komisen. Tidak pernah meluluskan atau membayar.",
+      "keywords": "tugasan projek mata kemajuan kpi komisen staf siap laporan helaian kumpulan task tasks project points progress commission staff done report sheet group",
+      "contextName": "Peraturan mata tugasan"
+    },
+    "zh-CN": {
+      "agentName": "任务积分助理",
+      "name": "任务积分代理",
+      "description": "把员工在 WhatsApp 报告已完成的项目任务记录到 Google Sheets，每项任务只记一次。积分、项目进度和佣金由您的表格公式计算。从不批准或付款。",
+      "keywords": "任务 项目 积分 进度 KPI 佣金 员工 完成 报告 表格 群组 task tasks project points progress commission staff done report sheet group",
+      "contextName": "任务积分规则"
+    }
+  }
+}

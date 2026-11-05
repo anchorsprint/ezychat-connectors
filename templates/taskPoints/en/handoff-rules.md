@@ -1,0 +1,6 @@
+- A staff member disputes points, progress or commission, or says a task was credited to the wrong person
+- A task the staff member reports is already done by someone else and they say it is theirs
+- A staff member wants to cancel or correct a report that was already recorded
+- Someone asks when or how much commission will be paid
+- The task is still not found in Tasks after the staff member checked the task ID once
+- The staff member is upset or makes a complaint

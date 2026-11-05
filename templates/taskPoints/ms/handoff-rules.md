@@ -1,0 +1,6 @@
+- Staf mempertikaikan mata, kemajuan atau komisen, atau mengatakan tugasan dikreditkan kepada orang yang salah
+- Tugasan yang dilaporkan sudah disiapkan oleh orang lain dan staf mengatakan ia miliknya
+- Staf mahu membatalkan atau membetulkan laporan yang sudah direkod
+- Seseorang bertanya bila atau berapa komisen akan dibayar
+- Tugasan masih tidak dijumpai dalam Tasks selepas staf menyemak ID tugasan sekali
+- Staf kecewa atau membuat aduan
