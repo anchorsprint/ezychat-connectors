@@ -13,12 +13,12 @@
 1. Tasks（Read）。由您填写：Project | Task ID | Task | Points | KPI
    每项任务一行。Points 是数字。项目目标（例如 50,000 积分）是该项目所有任务积分的总和。任务编号请勿包含空格，例如 ALPHA017。
 
-2. Completions（Add rows）。AI 为每项报告的任务添加一行：Date | Name | WhatsApp | Group | Project | Task ID | Note
+2. Completions（Add rows）。AI 为每项报告的任务添加一行：Date | Name | WhatsApp | Group | AI agent | Source | Project | Task ID | Note
    此工作表中不要放公式或其他内容：新行会添加在最后一行下面，公式会把新行推到更下方。AI 从不修改行；您可以自行更正或删除行。
 
 3. Done（Read）。第 1 行：Project | Task ID | Task | Points | Done by | WhatsApp | Date
    在 A2 粘贴以下公式。它只列出 Tasks 中存在的每个项目和任务编号的第一次报告，因此重复报告永远不会增加积分：
-   =ARRAYFORMULA(LET(p,Completions!E2:E,t,Completions!F2:F,k,UPPER(REGEXREPLACE(p&"|"&t,"[\s_-]","")),tk,UPPER(REGEXREPLACE(Tasks!A2:A&"|"&Tasks!B2:B,"[\s_-]","")),first,MATCH(k,k,0)=SEQUENCE(ROWS(k)),known,ISNUMBER(MATCH(k,tk,0)),IFERROR(FILTER(HSTACK(IFERROR(VLOOKUP(k,HSTACK(tk,Tasks!A2:D),{2,3,4,5},FALSE),""),Completions!B2:B,Completions!C2:C,Completions!A2:A),(p<>"")*(t<>"")*first*known),"")))
+   =ARRAYFORMULA(LET(p,Completions!G2:G,t,Completions!H2:H,k,UPPER(REGEXREPLACE(p&"|"&t,"[\s_-]","")),tk,UPPER(REGEXREPLACE(Tasks!A2:A&"|"&Tasks!B2:B,"[\s_-]","")),first,MATCH(k,k,0)=SEQUENCE(ROWS(k)),known,ISNUMBER(MATCH(k,tk,0)),IFERROR(FILTER(HSTACK(IFERROR(VLOOKUP(k,HSTACK(tk,Tasks!A2:D),{2,3,4,5},FALSE),""),Completions!B2:B,Completions!C2:C,Completions!A2:A),(p<>"")*(t<>"")*first*known),"")))
 
 4. Progress（Read；如果不想让员工看到则设为 Off）。第 1 行：Project | Total points | Points done | Progress
    A2: =UNIQUE(FILTER(Tasks!A2:A,Tasks!A2:A<>""))

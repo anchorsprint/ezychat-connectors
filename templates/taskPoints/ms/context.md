@@ -13,12 +13,12 @@ Cipta satu Google Sheet dengan tab berikut. Baris 1 setiap tab mengandungi nama 
 1. Tasks (Read). Anda yang mengisi: Project | Task ID | Task | Points | KPI
    Satu baris bagi setiap tugasan. Points ialah nombor. Sasaran projek (contohnya 50,000 mata) ialah jumlah mata tugasannya. Gunakan ID tugasan tanpa ruang, contohnya ALPHA017.
 
-2. Completions (Add rows). AI menambah satu baris bagi setiap tugasan yang dilaporkan: Date | Name | WhatsApp | Group | Project | Task ID | Note
+2. Completions (Add rows). AI menambah satu baris bagi setiap tugasan yang dilaporkan: Date | Name | WhatsApp | Group | AI agent | Source | Project | Task ID | Note
    Jangan letak formula atau apa-apa lagi dalam tab ini: baris baharu ditambah di bawah baris terakhir, dan formula akan menolaknya ke bawah. AI tidak pernah mengubah baris; anda boleh membetulkan atau memadam baris sendiri.
 
 3. Done (Read). Baris 1: Project | Task ID | Task | Points | Done by | WhatsApp | Date
    Dalam A2 tampal formula ini. Ia hanya menyenaraikan laporan PERTAMA bagi setiap projek dan ID tugasan yang ada dalam Tasks, jadi laporan berulang tidak pernah menambah mata:
-   =ARRAYFORMULA(LET(p,Completions!E2:E,t,Completions!F2:F,k,UPPER(REGEXREPLACE(p&"|"&t,"[\s_-]","")),tk,UPPER(REGEXREPLACE(Tasks!A2:A&"|"&Tasks!B2:B,"[\s_-]","")),first,MATCH(k,k,0)=SEQUENCE(ROWS(k)),known,ISNUMBER(MATCH(k,tk,0)),IFERROR(FILTER(HSTACK(IFERROR(VLOOKUP(k,HSTACK(tk,Tasks!A2:D),{2,3,4,5},FALSE),""),Completions!B2:B,Completions!C2:C,Completions!A2:A),(p<>"")*(t<>"")*first*known),"")))
+   =ARRAYFORMULA(LET(p,Completions!G2:G,t,Completions!H2:H,k,UPPER(REGEXREPLACE(p&"|"&t,"[\s_-]","")),tk,UPPER(REGEXREPLACE(Tasks!A2:A&"|"&Tasks!B2:B,"[\s_-]","")),first,MATCH(k,k,0)=SEQUENCE(ROWS(k)),known,ISNUMBER(MATCH(k,tk,0)),IFERROR(FILTER(HSTACK(IFERROR(VLOOKUP(k,HSTACK(tk,Tasks!A2:D),{2,3,4,5},FALSE),""),Completions!B2:B,Completions!C2:C,Completions!A2:A),(p<>"")*(t<>"")*first*known),"")))
 
 4. Progress (Read, atau Off jika staf tidak patut melihatnya). Baris 1: Project | Total points | Points done | Progress
    A2: =UNIQUE(FILTER(Tasks!A2:A,Tasks!A2:A<>""))

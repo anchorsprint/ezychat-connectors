@@ -13,12 +13,12 @@ Create one Google Sheet with these tabs. Row 1 of each tab holds the column name
 1. Tasks (Read). You fill it in: Project | Task ID | Task | Points | KPI
    One row per task. Points is a number. A project's target (for example 50,000 points) is the sum of its task points. Use task IDs without spaces, for example ALPHA017.
 
-2. Completions (Add rows). The AI adds one row per reported task: Date | Name | WhatsApp | Group | Project | Task ID | Note
+2. Completions (Add rows). The AI adds one row per reported task: Date | Name | WhatsApp | Group | AI agent | Source | Project | Task ID | Note
    Put no formulas and nothing else in this tab: new rows are added below the last row, and formulas would push them down. Rows are never changed by the AI; you may correct or delete a row yourself.
 
 3. Done (Read). Row 1: Project | Task ID | Task | Points | Done by | WhatsApp | Date
    In A2 paste this formula. It lists only the FIRST report of each project and task ID that exists in Tasks, so a repeated report never adds points:
-   =ARRAYFORMULA(LET(p,Completions!E2:E,t,Completions!F2:F,k,UPPER(REGEXREPLACE(p&"|"&t,"[\s_-]","")),tk,UPPER(REGEXREPLACE(Tasks!A2:A&"|"&Tasks!B2:B,"[\s_-]","")),first,MATCH(k,k,0)=SEQUENCE(ROWS(k)),known,ISNUMBER(MATCH(k,tk,0)),IFERROR(FILTER(HSTACK(IFERROR(VLOOKUP(k,HSTACK(tk,Tasks!A2:D),{2,3,4,5},FALSE),""),Completions!B2:B,Completions!C2:C,Completions!A2:A),(p<>"")*(t<>"")*first*known),"")))
+   =ARRAYFORMULA(LET(p,Completions!G2:G,t,Completions!H2:H,k,UPPER(REGEXREPLACE(p&"|"&t,"[\s_-]","")),tk,UPPER(REGEXREPLACE(Tasks!A2:A&"|"&Tasks!B2:B,"[\s_-]","")),first,MATCH(k,k,0)=SEQUENCE(ROWS(k)),known,ISNUMBER(MATCH(k,tk,0)),IFERROR(FILTER(HSTACK(IFERROR(VLOOKUP(k,HSTACK(tk,Tasks!A2:D),{2,3,4,5},FALSE),""),Completions!B2:B,Completions!C2:C,Completions!A2:A),(p<>"")*(t<>"")*first*known),"")))
 
 4. Progress (Read, or Off if staff should not see it). Row 1: Project | Total points | Points done | Progress
    A2: =UNIQUE(FILTER(Tasks!A2:A,Tasks!A2:A<>""))
