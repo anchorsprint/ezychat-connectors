@@ -1,0 +1,51 @@
+# GitHub: coming soon (Vote for this connector).
+# Planned live version: kind mcp on GitHub's remote MCP server, signed in with a token limited to the chosen repositories.
+# Icon: Lucide "git-pull-request" (ISC, see ICONS-LICENSE).
+id: github
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: coming_soon
+editions:
+  - lite
+  - enterprise
+name: GitHub
+summary:
+  en: Look up issues and pull requests; open new issues in GitHub.
+  ms: Semak isu dan permintaan tarik; buka isu baharu dalam GitHub.
+  zh-CN: 查询 GitHub 中的议题和拉取请求；新建议题。
+description:
+  en: The AI looks up the status of issues and pull requests in the repositories you allow, and opens a new issue when someone reports a problem.
+  ms: AI menyemak status isu dan permintaan tarik dalam repositori yang anda benarkan, dan membuka isu baharu apabila seseorang melaporkan masalah.
+  zh-CN: AI 在您允许的仓库中查询议题和拉取请求的状态，并在有人报告问题时新建议题。
+category: other
+privacy:
+  en: EzyChat sends GitHub only what a look-up or a new issue needs in one chat, and never the chat text.
+  ms: EzyChat hanya menghantar kepada GitHub apa yang diperlukan oleh satu semakan atau isu baharu
+    dalam satu sembang, dan tidak pernah teks sembang.
+  zh-CN: EzyChat 只向 GitHub 发送一次聊天中查询或新建议题所需的内容，从不发送聊天内容。
+tools:
+  - name: search_issues
+    title:
+      en: Look up issues and pull requests
+      ms: Semak isu dan permintaan tarik
+      zh-CN: 查询议题和拉取请求
+    description:
+      en: Finds issues and pull requests and reads their status and latest comments.
+      ms: Mencari isu dan permintaan tarik serta membaca status dan komen terkini.
+      zh-CN: 查找议题和拉取请求，并读取其状态和最新评论。
+    access: read
+  - name: create_issue
+    title:
+      en: Open an issue
+      ms: Buka isu
+      zh-CN: 新建议题
+    description:
+      en: Opens a new issue with the reported problem in an allowed repository.
+      ms: Membuka isu baharu dengan masalah yang dilaporkan dalam repositori yang dibenarkan.
+      zh-CN: 在允许的仓库中，根据报告的问题新建议题。
+    access: write
+vote:
+  en: "Hi EzyChat team, please add the GitHub connector. We would use it for:"
+  ms: "Hai pasukan EzyChat, sila tambah penyambung GitHub. Kami akan menggunakannya untuk:"
+  zh-CN: 您好 EzyChat 团队，请添加 GitHub 连接器。我们会用它来：
+icon: icon.svg
