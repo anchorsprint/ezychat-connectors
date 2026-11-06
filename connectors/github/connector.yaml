@@ -11,9 +11,9 @@ editions:
   - lite
 name: GitHub
 summary:
-  en: Look up issues and pull requests in the repositories you allow.
-  ms: Semak isu dan permintaan tarik dalam repositori yang anda benarkan.
-  zh-CN: 在您允许的仓库中查询议题和拉取请求。
+  en: Look up the status of issues and pull requests on GitHub.
+  ms: Semak status isu dan permintaan tarik di GitHub.
+  zh-CN: 查询 GitHub 上议题和拉取请求的状态。
 description:
   en: "The AI looks up issues and pull requests on GitHub and answers with their status, labels and latest comments. Create a fine-grained token on GitHub with access only to the repositories the AI may read, then paste it here. The AI can read but never change anything on GitHub."
   ms: "AI menyemak isu dan permintaan tarik di GitHub dan menjawab dengan status, label dan komen terkini. Cipta token terperinci di GitHub dengan akses hanya kepada repositori yang boleh dibaca oleh AI, kemudian tampal di sini. AI boleh membaca tetapi tidak pernah mengubah apa-apa di GitHub."
@@ -22,9 +22,9 @@ category: other
 publisher: GitHub
 homepage: https://github.com/github/github-mcp-server
 privacy:
-  en: "EzyChat sends GitHub only the search words and the issue or pull request numbers the AI looks up, and never the chat text. GitHub answers only for the repositories your token allows. The token is stored encrypted on this computer."
-  ms: "EzyChat hanya menghantar kepada GitHub kata carian dan nombor isu atau permintaan tarik yang disemak oleh AI, dan tidak pernah teks sembang. GitHub hanya menjawab untuk repositori yang dibenarkan oleh token anda. Token disimpan secara tersulit di komputer ini."
-  zh-CN: EzyChat 只向 GitHub 发送 AI 查询所用的搜索词以及议题或拉取请求编号，从不发送聊天内容。GitHub 只返回您的令牌所允许仓库的信息。令牌加密保存在这台电脑上。
+  en: "EzyChat sends GitHub only the search words and the issue or pull request numbers the AI looks up, and never the chat text. For private repositories, GitHub answers only for those your token allows; public repositories on GitHub can always be read. The token is stored encrypted on this computer."
+  ms: "EzyChat hanya menghantar kepada GitHub kata carian dan nombor isu atau permintaan tarik yang disemak oleh AI, dan tidak pernah teks sembang. Bagi repositori persendirian, GitHub hanya menjawab untuk repositori yang dibenarkan oleh token anda; repositori awam di GitHub sentiasa boleh dibaca. Token disimpan secara tersulit di komputer ini."
+  zh-CN: EzyChat 只向 GitHub 发送 AI 查询所用的搜索词以及议题或拉取请求编号，从不发送聊天内容。对于私有仓库，GitHub 只返回您的令牌所允许仓库的信息；GitHub 上的公开仓库始终可以读取。令牌加密保存在这台电脑上。
 mcp:
   url: https://api.githubcopilot.com/mcp/readonly
 auth:
@@ -78,19 +78,9 @@ tools:
       ms: Mencari permintaan tarik mengikut perkataan, pengarang atau status.
       zh-CN: 按关键词、作者或状态查找拉取请求。
     access: read
-  - name: pull_request_read
-    title:
-      en: Read a pull request
-      ms: Baca permintaan tarik
-      zh-CN: 读取拉取请求
-    description:
-      en: Reads one pull request with its status, reviews and checks. It can also read the changed code, so turn it off for agents that talk to customers.
-      ms: Membaca satu permintaan tarik bersama status, semakan dan pemeriksaannya. Ia juga boleh membaca kod yang diubah, jadi matikannya bagi ejen yang bercakap dengan pelanggan.
-      zh-CN: 读取一个拉取请求及其状态、审查和检查结果。它也能读取更改的代码，因此请为与客户对话的代理关闭此项。
-    access: read
 icon: icon.svg
 stage: beta
 notice:
-  en: "Give the token access only to the repositories the AI may read, with read-only permission for Issues and Pull requests. If your organisation uses GitHub Copilot, its MCP server policy must allow it."
-  ms: "Beri token akses hanya kepada repositori yang boleh dibaca oleh AI, dengan kebenaran baca sahaja untuk Isu dan Permintaan tarik. Jika organisasi anda menggunakan GitHub Copilot, dasar pelayan MCP-nya mesti membenarkannya."
-  zh-CN: 请只授予令牌访问 AI 可以读取的仓库，并对议题和拉取请求设置只读权限。如果您的组织使用 GitHub Copilot，其 MCP 服务器策略必须允许此连接。
+  en: "Give the token access only to the private repositories the AI may read, with read-only permission for Issues and Pull requests. Public repositories can always be read. Name your repositories in the business context so the AI searches only those. If your organisation uses GitHub Copilot, its MCP server policy must allow it."
+  ms: "Beri token akses hanya kepada repositori persendirian yang boleh dibaca oleh AI, dengan kebenaran baca sahaja untuk Isu dan Permintaan tarik. Repositori awam sentiasa boleh dibaca. Namakan repositori anda dalam konteks perniagaan supaya AI hanya mencari di situ. Jika organisasi anda menggunakan GitHub Copilot, dasar pelayan MCP-nya mesti membenarkannya."
+  zh-CN: 请只授予令牌访问 AI 可以读取的私有仓库，并对议题和拉取请求设置只读权限。公开仓库始终可以读取。请在业务背景中写明您的仓库，让 AI 只在这些仓库中搜索。如果您的组织使用 GitHub Copilot，其 MCP 服务器策略必须允许此连接。
