@@ -3,12 +3,12 @@
 # Look-ups only for now: the write tools (notion-create-pages, notion-update-page) pass page
 # properties as a free-form map, which the app's argument check (cleanArgs) drops, so they are not
 # listed until the app keeps such maps.
-# minAppVersion: the current released Lite (0.1.78); the MCP engine is unchanged since 0.1.61.
-# Enterprise has its own, lower version numbers, so it shows this entry as "needs update" for now.
+# minAppVersion stays 0.1.0 (like Google Sheets): Enterprise has its own, lower version numbers, and
+# the partner MCP engine is in every current Lite (since 0.1.60) and Enterprise build.
 # Icon: Lucide "notebook-text" (ISC, see ICONS-LICENSE), not Notion's logo.
 id: notion
 schemaVersion: 1
-minAppVersion: 0.1.78
+minAppVersion: 0.1.0
 kind: mcp
 editions:
   - lite
