@@ -12,7 +12,7 @@ Feather project and are also under the MIT License below.
   autocount        calculator           billplz      credit-card
   sql-account      receipt              zoho-books   receipt
   bukku            book-open-check      zoho-crm     contact-round
-  xero             wallet
+  xero             wallet               notion       notebook-text
 
 A connector may bring its own icon (its owner's logo, with the right to use it); this notice then
 no longer covers that folder's icon.
