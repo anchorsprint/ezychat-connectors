@@ -1,51 +1,96 @@
-# GitHub: coming soon (Vote for this connector).
-# Planned live version: kind mcp on GitHub's remote MCP server, signed in with a token limited to the chosen repositories.
+# GitHub: GitHub's official remote MCP server (github/github-mcp-server), read-only endpoint.
+# Sign-in: a fine-grained personal access token; GitHub limits it to the repositories the admin chose.
+# Creating issues waits for an app guard: GitHub's issue_write also updates and closes issues.
+# Lite only: partner MCP connectors are in EzyChat Lite from 0.1.60; Enterprise support not confirmed.
 # Icon: Lucide "git-pull-request" (ISC, see ICONS-LICENSE).
 id: github
 schemaVersion: 1
-minAppVersion: 0.1.0
-kind: coming_soon
+minAppVersion: 0.1.60
+kind: mcp
 editions:
   - lite
-  - enterprise
 name: GitHub
 summary:
-  en: Look up issues and pull requests; open new issues in GitHub.
-  ms: Semak isu dan permintaan tarik; buka isu baharu dalam GitHub.
-  zh-CN: 查询 GitHub 中的议题和拉取请求；新建议题。
+  en: Look up issues and pull requests in the repositories you allow.
+  ms: Semak isu dan permintaan tarik dalam repositori yang anda benarkan.
+  zh-CN: 在您允许的仓库中查询议题和拉取请求。
 description:
-  en: The AI looks up the status of issues and pull requests in the repositories you allow, and opens a new issue when someone reports a problem.
-  ms: AI menyemak status isu dan permintaan tarik dalam repositori yang anda benarkan, dan membuka isu baharu apabila seseorang melaporkan masalah.
-  zh-CN: AI 在您允许的仓库中查询议题和拉取请求的状态，并在有人报告问题时新建议题。
+  en: "The AI looks up issues and pull requests on GitHub and answers with their status, labels and latest comments. Create a fine-grained token on GitHub with access only to the repositories the AI may read, then paste it here. The AI can read but never change anything on GitHub."
+  ms: "AI menyemak isu dan permintaan tarik di GitHub dan menjawab dengan status, label dan komen terkini. Cipta token terperinci di GitHub dengan akses hanya kepada repositori yang boleh dibaca oleh AI, kemudian tampal di sini. AI boleh membaca tetapi tidak pernah mengubah apa-apa di GitHub."
+  zh-CN: AI 在 GitHub 上查询议题和拉取请求，并告知其状态、标签和最新评论。请在 GitHub 上创建一个细粒度令牌，只授权 AI 可以读取的仓库，然后粘贴到这里。AI 只能读取，绝不会修改 GitHub 上的任何内容。
 category: other
+publisher: GitHub
+homepage: https://github.com/github/github-mcp-server
 privacy:
-  en: EzyChat sends GitHub only what a look-up or a new issue needs in one chat, and never the chat text.
-  ms: EzyChat hanya menghantar kepada GitHub apa yang diperlukan oleh satu semakan atau isu baharu
-    dalam satu sembang, dan tidak pernah teks sembang.
-  zh-CN: EzyChat 只向 GitHub 发送一次聊天中查询或新建议题所需的内容，从不发送聊天内容。
+  en: "EzyChat sends GitHub only the search words and the issue or pull request numbers the AI looks up, and never the chat text. GitHub answers only for the repositories your token allows. The token is stored encrypted on this computer."
+  ms: "EzyChat hanya menghantar kepada GitHub kata carian dan nombor isu atau permintaan tarik yang disemak oleh AI, dan tidak pernah teks sembang. GitHub hanya menjawab untuk repositori yang dibenarkan oleh token anda. Token disimpan secara tersulit di komputer ini."
+  zh-CN: EzyChat 只向 GitHub 发送 AI 查询所用的搜索词以及议题或拉取请求编号，从不发送聊天内容。GitHub 只返回您的令牌所允许仓库的信息。令牌加密保存在这台电脑上。
+mcp:
+  url: https://api.githubcopilot.com/mcp/readonly
+auth:
+  type: api_key
+  label:
+    en: Fine-grained personal access token
+    ms: Token akses peribadi terperinci
+    zh-CN: 细粒度个人访问令牌
+  help: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token
+  header:
+    name: Authorization
+    value: Bearer {key}
 tools:
   - name: search_issues
     title:
-      en: Look up issues and pull requests
-      ms: Semak isu dan permintaan tarik
-      zh-CN: 查询议题和拉取请求
+      en: Search issues
+      ms: Cari isu
+      zh-CN: 搜索议题
     description:
-      en: Finds issues and pull requests and reads their status and latest comments.
-      ms: Mencari isu dan permintaan tarik serta membaca status dan komen terkini.
-      zh-CN: 查找议题和拉取请求，并读取其状态和最新评论。
+      en: Finds issues by words, label or state.
+      ms: Mencari isu mengikut perkataan, label atau status.
+      zh-CN: 按关键词、标签或状态查找议题。
     access: read
-  - name: create_issue
+  - name: list_issues
     title:
-      en: Open an issue
-      ms: Buka isu
-      zh-CN: 新建议题
+      en: List issues in a repository
+      ms: Senarai isu dalam repositori
+      zh-CN: 列出仓库中的议题
     description:
-      en: Opens a new issue with the reported problem in an allowed repository.
-      ms: Membuka isu baharu dengan masalah yang dilaporkan dalam repositori yang dibenarkan.
-      zh-CN: 在允许的仓库中，根据报告的问题新建议题。
-    access: write
-vote:
-  en: "Hi EzyChat team, please add the GitHub connector. We would use it for:"
-  ms: "Hai pasukan EzyChat, sila tambah penyambung GitHub. Kami akan menggunakannya untuk:"
-  zh-CN: 您好 EzyChat 团队，请添加 GitHub 连接器。我们会用它来：
+      en: Lists the open or closed issues of one repository.
+      ms: Menyenaraikan isu terbuka atau tertutup bagi satu repositori.
+      zh-CN: 列出一个仓库中打开或已关闭的议题。
+    access: read
+  - name: issue_read
+    title:
+      en: Read an issue
+      ms: Baca isu
+      zh-CN: 读取议题
+    description:
+      en: Reads one issue with its status, labels and comments.
+      ms: Membaca satu isu bersama status, label dan komennya.
+      zh-CN: 读取一个议题及其状态、标签和评论。
+    access: read
+  - name: search_pull_requests
+    title:
+      en: Search pull requests
+      ms: Cari permintaan tarik
+      zh-CN: 搜索拉取请求
+    description:
+      en: Finds pull requests by words, author or state.
+      ms: Mencari permintaan tarik mengikut perkataan, pengarang atau status.
+      zh-CN: 按关键词、作者或状态查找拉取请求。
+    access: read
+  - name: pull_request_read
+    title:
+      en: Read a pull request
+      ms: Baca permintaan tarik
+      zh-CN: 读取拉取请求
+    description:
+      en: Reads one pull request with its status, reviews and checks. It can also read the changed code, so turn it off for agents that talk to customers.
+      ms: Membaca satu permintaan tarik bersama status, semakan dan pemeriksaannya. Ia juga boleh membaca kod yang diubah, jadi matikannya bagi ejen yang bercakap dengan pelanggan.
+      zh-CN: 读取一个拉取请求及其状态、审查和检查结果。它也能读取更改的代码，因此请为与客户对话的代理关闭此项。
+    access: read
 icon: icon.svg
+stage: beta
+notice:
+  en: "Give the token access only to the repositories the AI may read, with read-only permission for Issues and Pull requests. If your organisation uses GitHub Copilot, its MCP server policy must allow it."
+  ms: "Beri token akses hanya kepada repositori yang boleh dibaca oleh AI, dengan kebenaran baca sahaja untuk Isu dan Permintaan tarik. Jika organisasi anda menggunakan GitHub Copilot, dasar pelayan MCP-nya mesti membenarkannya."
+  zh-CN: 请只授予令牌访问 AI 可以读取的仓库，并对议题和拉取请求设置只读权限。如果您的组织使用 GitHub Copilot，其 MCP 服务器策略必须允许此连接。
