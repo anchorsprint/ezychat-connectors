@@ -1,0 +1,65 @@
+# Notion: Notion's own hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP). Sign-in is
+# Notion's OAuth with dynamic client registration and PKCE, so no client ID is listed here.
+# Look-ups only for now: the write tools (notion-create-pages, notion-update-page) pass page
+# properties as a free-form map, which the app's argument check (cleanArgs) drops, so they are not
+# listed until the app keeps such maps.
+# minAppVersion stays 0.1.0 (like Google Sheets): Enterprise has its own, lower version numbers, and
+# the partner MCP engine is in every current Lite (since 0.1.60) and Enterprise build.
+# Icon: Lucide "notebook-text" (ISC, see ICONS-LICENSE), not Notion's logo.
+id: notion
+schemaVersion: 1
+minAppVersion: 0.1.0
+kind: mcp
+editions:
+  - lite
+  - enterprise
+name: Notion
+publisher: Notion Labs, Inc.
+homepage: https://www.notion.com/
+summary:
+  en: Answer customers from your Notion pages and databases.
+  ms: Jawab pelanggan daripada halaman dan pangkalan data Notion anda.
+  zh-CN: 根据您的 Notion 页面和数据库回答客户。
+description:
+  en: "Keep your price list, product details, policies or FAQ in Notion and let your AI agent look them up before it answers. The AI searches Notion and reads the page it needs; it does not change anything in Notion. Sign in with Notion to connect."
+  ms: "Simpan senarai harga, butiran produk, polisi atau soalan lazim dalam Notion dan biarkan ejen AI anda mencarinya sebelum menjawab. AI mencari dalam Notion dan membaca halaman yang diperlukan; ia tidak mengubah apa-apa dalam Notion. Log masuk dengan Notion untuk menyambung."
+  zh-CN: 把价格表、产品资料、政策或常见问题放在 Notion 中，让 AI 代理在回答前查找。AI 会搜索 Notion 并读取所需页面，不会更改 Notion 中的任何内容。使用 Notion 登录即可连接。
+category: other
+privacy:
+  en: "EzyChat sends Notion only the search words and page links a look-up needs, never the chat text. Notion returns page content to this computer. The AI can read every page the Notion account you sign in with can see. The sign-in is stored encrypted on this computer."
+  ms: "EzyChat hanya menghantar kepada Notion kata carian dan pautan halaman yang diperlukan oleh satu semakan, tidak pernah teks sembang. Notion menghantar kandungan halaman ke komputer ini. AI boleh membaca setiap halaman yang boleh dilihat oleh akaun Notion yang anda gunakan untuk log masuk. Log masuk disimpan secara tersulit di komputer ini."
+  zh-CN: EzyChat 只向 Notion 发送查询所需的搜索词和页面链接，从不发送聊天内容。Notion 把页面内容返回到这台电脑。AI 可以读取您登录所用 Notion 账户能看到的所有页面。登录信息加密保存在这台电脑上。
+mcp:
+  url: https://mcp.notion.com/mcp
+auth:
+  type: oauth
+tools:
+  - name: notion-search
+    title:
+      en: Search Notion
+      ms: Cari dalam Notion
+      zh-CN: 搜索 Notion
+    description:
+      en: Finds pages and databases in Notion by topic or title.
+      ms: Mencari halaman dan pangkalan data dalam Notion mengikut topik atau tajuk.
+      zh-CN: 按主题或标题查找 Notion 中的页面和数据库。
+    instructions:
+      en: "Search with a few short keywords or a page title from the customer's question. Then read the best match with notion-fetch before you answer; a search result alone is only a hint."
+    access: read
+  - name: notion-fetch
+    title:
+      en: Read a Notion page
+      ms: Baca halaman Notion
+      zh-CN: 读取 Notion 页面
+    description:
+      en: Reads one Notion page or database that a search found.
+      ms: Membaca satu halaman atau pangkalan data Notion yang ditemui oleh carian.
+      zh-CN: 读取搜索找到的一个 Notion 页面或数据库。
+    instructions:
+      en: "Pass the id or url of a notion-search result unchanged. Answer only from what the page says."
+    access: read
+icon: icon.svg
+notice:
+  en: "The AI can read every page that the Notion account you sign in with can see. To limit it, sign in with a Notion account that can see only the pages your AI agent should use."
+  ms: "AI boleh membaca setiap halaman yang boleh dilihat oleh akaun Notion yang anda gunakan untuk log masuk. Untuk mengehadkannya, log masuk dengan akaun Notion yang hanya boleh melihat halaman yang patut digunakan oleh ejen AI anda."
+  zh-CN: AI 可以读取您登录所用 Notion 账户能看到的所有页面。如需限制，请使用只能看到 AI 代理应使用页面的 Notion 账户登录。

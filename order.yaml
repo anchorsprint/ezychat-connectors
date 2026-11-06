@@ -2,6 +2,7 @@
 order:
   - google-calendar
   - google-sheets
+  - notion
   - hitpay
   - shopify
   - autocount
